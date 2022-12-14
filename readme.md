@@ -35,7 +35,7 @@ O back-end foi realizado utilizando o nodeJS e o prisma (utilizado para linkar o
 O site utilizou as linguagens de marcação HTML para estruturação e CSS para estilização, porém tambem foi utilizado O javaScript, para permitir interligar o Front-End com o Back-End, além disso foi utilizado para deixar a pagina mais dinámica 
 
 1. <a href="https://www.figma.com/file/MXa6NKlw0thT81J3xqLMdn/Protótipo?node-id=0%3A1&t=Aa6FHLd6QHsenSbp-0"> Figma</a>
-2. <a href="https://github.com/HeitorPontieri/pizza-frontend">Front-End</a>
+2. <a href="https://github.com/arthuraugusn/pizza-time-front-end">Front-End</a>
 
 
 
