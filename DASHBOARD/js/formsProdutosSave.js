@@ -97,10 +97,11 @@ document.getElementById('tipo-pizza-bebida').addEventListener('change', async(ev
 })
 
 
-const saveJson=(preco, foto, nome, descricao)=>{
+const saveJson=(preco, foto,promocao, nome, descricao)=>{
     let json = {
         "preco": preco,
         "foto": foto,
+        "promocao": promocao,
         "nome": nome,
         "descricao": descricao
     }
@@ -126,6 +127,14 @@ const saveJsonBebida = (idTipo, idTamanho, ml)=>{
 }
 
 document.querySelector('.button_save').addEventListener('click', async ()=>{
+    const valuePromocao = document.querySelector('.campo_promocao').value
+
+    let promocao = parseInt(valuePromocao)
+
+    if(isNaN(promocao)){
+        promocao = 0
+    }
+
     if(document.getElementById('tipo-pizza-bebida').value == 'Pizzas'){
         const tipoOption = document.getElementById('tipo')
         const idTipoPizza = tipoOption.options[tipoOption.selectedIndex].id
@@ -133,9 +142,10 @@ document.querySelector('.button_save').addEventListener('click', async ()=>{
         const tamanhoOption = document.getElementById('tamanho')
         const idTamanhoPizza = tamanhoOption.options[tamanhoOption.selectedIndex].id
 
+        console.log(promocao)
 
-        let jsonProduto = saveJson(document.querySelector('.campo_preco').value,"https://www.bing.com/th?id=OIP.AAPyR4sX5b7GmjjdRMlTAAHaLH&w=204&h=306&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2", document.querySelector('.campo_nome').value,  document.querySelector('.campo_descricao').value)
-        await insertProduto(jsonProduto.preco, jsonProduto.foto, jsonProduto.nome, jsonProduto.descricao)
+        let jsonProduto = saveJson(document.querySelector('.campo_preco').value,"https://www.bing.com/th?id=OIP.djlnJoe23sxS415sQi--CQHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",promocao, document.querySelector('.campo_nome').value,  document.querySelector('.campo_descricao').value)
+        await insertProduto(jsonProduto.preco, jsonProduto.foto,jsonProduto.promocao, jsonProduto.nome, jsonProduto.descricao)
 
         let jsonPizza = saveJsonPizza(idTipoPizza, idTamanhoPizza)
         await insertPizza(jsonPizza.id_tipo_pizza, jsonPizza.id_tamanho_pizza)
@@ -148,8 +158,8 @@ document.querySelector('.button_save').addEventListener('click', async ()=>{
         const tamanhoOption = document.getElementById('tamanho')
         const idTamanhoBebida = tamanhoOption.options[tamanhoOption.selectedIndex].id
 
-        let jsonProduto = saveJson(document.querySelector('.campo_preco').value,"https://www.bing.com/th?id=OIP.AAPyR4sX5b7GmjjdRMlTAAHaLH&w=204&h=306&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2", document.querySelector('.campo_nome').value,  document.querySelector('.campo_descricao').value)
-        await insertProduto(jsonProduto.preco, jsonProduto.foto, jsonProduto.nome, jsonProduto.descricao)
+        let jsonProduto = saveJson(document.querySelector('.campo_preco').value,"https://www.bing.com/th?id=OIP.1V-bF80O6kYSBKVDvzGjQAHaJ4&w=216&h=288&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",promocao, document.querySelector('.campo_nome').value,  document.querySelector('.campo_descricao').value)
+        await insertProduto(jsonProduto.preco, jsonProduto.foto,jsonProduto.promocao, jsonProduto.nome, jsonProduto.descricao)
 
         let jsonBebida = saveJsonBebida(idTipoBebida, idTamanhoBebida, 500)
         await insertBebida(jsonBebida.id_tipo_bebida, jsonBebida.id_tamanho_bebida, jsonBebida.ml)

@@ -31,17 +31,6 @@ const getAllBebidas = async()=>{
     return bebidas
 }
 
-const getAllProdutos = async()=>{
-
-    const url = 'http://localhost:8080/v1/produtos'
-
-    const response = await fetch(url)
-
-    const produtos = response.json()
-    
-    return produtos
-}
-
 const getAllTamanhosPizzas = async()=>{
 
     const url = 'http://localhost:8080/v1/produtos/pizza/tamanhos'
@@ -86,7 +75,7 @@ const getAllTiposBebidas = async()=>{
     return tipoBebida
 }
 
-const insertProduto = async(preco, foto, nome, descricao)=>{
+const insertProduto = async(preco, foto,promocao, nome, descricao)=>{
     let status
 
     const url = `http://localhost:8080/v1/produto`
@@ -94,12 +83,45 @@ const insertProduto = async(preco, foto, nome, descricao)=>{
     const produto = {
         preco: preco,
         foto: foto, 
+        promocao: promocao,
         nome: nome,
         descricao: descricao
     }
 
     const init = {
         method: 'POST',
+        headers: {
+            "content-type": 'application/json',
+        },
+        body: JSON.stringify(produto)
+    }
+
+    const response = await fetch(url, init)
+
+    if(response){
+        status = true
+    }else{
+        status = false
+    }
+
+    return status
+}
+
+const updateProduto = async(idProduto, preco, foto,promocao, nome, descricao)=>{
+    let status
+
+    const url = `http://localhost:8080/v1/produto/${idProduto}`
+
+    const produto = {
+        preco: preco,
+        foto: foto, 
+        promocao: promocao,
+        nome: nome,
+        descricao: descricao
+    }
+
+    const init = {
+        method: 'UPDATE',
         headers: {
             "content-type": 'application/json',
         },
@@ -175,6 +197,8 @@ const insertBebida = async(idTipoBebida, idTamanhoBebida, mlBebida)=>{
 
     return status
 }
+
+
 
 const insertUser = async(nome, senha, login, email, nivelPermissao)=>{
     let status
@@ -272,5 +296,6 @@ export{
     deletarPizza,
     deletarBebida,
     autenticateUser,
-    insertUser
+    insertUser,
+    updateProduto
 }
