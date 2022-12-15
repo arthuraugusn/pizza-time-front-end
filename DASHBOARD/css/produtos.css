@@ -91,7 +91,7 @@ main{
     font-weight: 400;
     font-size: 30px;
     color: #FFFFFF;
-    text-shadow: 0px 4px 4px var(--pizza-vinho);
+    text-shadow: 0px 4px 4px var(#73020C);
 }
 
 .pizzas{
@@ -100,7 +100,15 @@ main{
     justify-content: center;
     flex-grow: 1;
     gap: 50px;
+    height: 40vh;
+}
+
+.link_forms{
+    display: flex;
+    align-self: center;
+    justify-content: center;
     height: 100%;
+    width: 15%;
 }
 
 .nome{
@@ -134,11 +142,6 @@ main{
 }
 
 
-.caixa_produto img{
-    display: flex;
-    width: 100%;
-}
-
 .bebidas{
     display: flex;
     align-items: center;
@@ -147,10 +150,9 @@ main{
     gap: 50px;
 }
 
-.link_forms{
+.img-link{
     display: flex;
-    align-self: center;
-    justify-content: center;
-    height: 100%;
-    width: 15%;
+    height: 250px;
+    width: 250px;
+    border-radius: 15px;
 }

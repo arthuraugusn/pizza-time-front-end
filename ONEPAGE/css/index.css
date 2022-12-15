@@ -94,8 +94,9 @@ section {
     background-image: url(../img/Baked-Feta-Pizza-Featured-Image\ 1.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    padding-left: 112px;
-    padding-right: 112px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    
 }
 
 .title_cardapio{
@@ -136,7 +137,6 @@ section {
 }
 
 
-
 .preco{
     color: var(--pizza-marrom);
     text-shadow: 2px 0px 2px white;
@@ -147,8 +147,8 @@ section {
 
 .caixa_produto{
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    height: 500px;
     gap: 20px;
     border-radius: 20px;
     align-items: center;
@@ -158,13 +158,16 @@ section {
 }
 
 
-.caixa_produto img{
+.img-link{
     display: flex;
-    width: 100%;
+    height: 250px;
+    width: 250px;
+    border-radius: 50px;
 }
 
 .produtos_cardapio{
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -538,4 +541,14 @@ input{
     background: rgba(217, 162, 61, 0.7);
     border: 4px solid var(--pizza-vinho);
     border-radius: 20px;
+}
+
+
+@media (max-width: 1474px){
+    .contatos_forms{
+        padding: 0;
+        margin: 0;
+
+        flex-direction: column;
+    }
 }
